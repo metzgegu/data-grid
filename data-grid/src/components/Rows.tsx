@@ -1,7 +1,11 @@
 import { useDataGridContext } from "../contexts/DataGridContext";
 
-export const Row = () => {
+export const Rows = () => {
   const { schema, data, onRowClick } = useDataGridContext();
+
+  if (!data || !schema) {
+    return <div>Loading ...</div>
+  }
 
   return (
     <tbody>

@@ -1,5 +1,7 @@
 import { Row, Schema } from "./types/types";
 import { DataGridContextProvider } from "./contexts/DataGridContext";
+import { Rows } from "./components/Rows";
+import { Header } from "./components/Header";
 
 export type Props = {
   schema: Schema;
@@ -11,23 +13,9 @@ export const DataGrid: React.FC<Props> = ({ schema, data, onRowClick }) => {
   return (
     <DataGridContextProvider value={{ schema, data, onRowClick }}>
       <table>
-        <thead>
-          <tr>
-            {schema.map((column) => (
-              <th key={column.field}>{column.displayName}</th>
-            ))}
-          </tr>
-        </thead>
+        <Header />
 
-        <tbody>
-          {data.map((row, index) => (
-            <tr key={index} onClick={() => onRowClick && onRowClick(row)}>
-              {schema.map((column) => (
-                <td key={column.field}>{row[column.field]}</td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
+        <Rows />
       </table>
     </DataGridContextProvider>
   );

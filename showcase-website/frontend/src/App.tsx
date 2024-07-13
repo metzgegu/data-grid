@@ -1,23 +1,21 @@
 import './App.css';
 import { DataGrid } from 'data-grid'
+import { useUsersData } from './hooks/useUsersData';
 
 function App() {
-  const datas = {
-    schema: [
-      { displayName: 'Name', field: 'name' },
-      { displayName: 'Age', field: 'age' },
-      { displayName: 'Email', field: 'email' },
-    ],
-    data: [
-      { name: 'Alice', age: 25, email: 'alice@alice.co' },
-      { name: 'Bob', age: 30, email: 'bob@email.co' },
-      { name: 'Charlie', age: 35, email: 'charlie@email.co' },
-    ],
-  }
+  const schema = [
+    { displayName: 'Name', field: 'name' },
+    { displayName: 'Birth Date', field: 'birhdate' },
+    { displayName: 'Email', field: 'email' },
+    { displayName: 'Address', field: 'address' },
+    { displayName: 'Phone', field: 'phone' },
+  ]
+
+  const users = useUsersData()
 
   return (
     <div className="App">
-      <DataGrid schema={datas.schema} data={datas.data} onRowClick={(row) => console.log(row)} />
+      <DataGrid schema={schema} data={users} onRowClick={(row) => console.log(row)} />
     </div>
   );
 }
