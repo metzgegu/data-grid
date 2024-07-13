@@ -1,0 +1,17 @@
+{
+  "name": "light-backend",
+  "version": "1.0.0",
+  "description": "Light backend to serve a list of row from a pg database",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "author": "metzgegu",
+  "license": "MIT",
+  "dependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "express": "^4.19.2",
+    "sequelize": "^6.37.3",
+    "sqlite3": "^5.1.7"
+  }
+}
