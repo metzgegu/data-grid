@@ -1,22 +1,30 @@
-import { Row, Schema } from "./types/types";
-import { DataGridContextProvider } from "./contexts/DataGridContext";
+import "./styles/DataGrid.css";
+import { PaginationOptions, Row, Schema } from "./types/types";
 import { Rows } from "./components/Rows";
 import { Header } from "./components/Header";
+import { Pagination } from "./components/Pagination";
 
 export type Props = {
   schema: Schema;
   data: Row[];
+  paginationOptions?: PaginationOptions;
   onRowClick?: (row: Row) => void;
 };
 
-export const DataGrid: React.FC<Props> = ({ schema, data, onRowClick }) => {
+export const DataGrid: React.FC<Props> = ({ schema, data, onRowClick, paginationOptions }) => {
   return (
-    <DataGridContextProvider value={{ schema, data, onRowClick }}>
-      <table>
-        <Header />
+    <div className="datagrid">
+      <table className="table">
+        <Header schema={schema} />
 
-        <Rows />
+        <Rows schema={schema} data={data} onRowClick={onRowClick}/>
       </table>
-    </DataGridContextProvider>
+
+      {paginationOptions && (
+        <div className="datagrid__pagination">
+          <Pagination paginationOptions={paginationOptions} />
+        </div>
+      )}
+    </div>
   );
 };

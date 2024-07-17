@@ -1,8 +1,6 @@
-import { useDataGridContext } from "../contexts/DataGridContext";
+import { Schema } from "../types/types";
 
-export const Header: React.FC = () => {
-  const { schema } = useDataGridContext();
-
+export const Header: React.FC<{ schema: Schema }> = ({ schema }) => {
   if (!schema) {
     return <div>Loading ...</div>
   }

@@ -1,8 +1,7 @@
-import { useDataGridContext } from "../contexts/DataGridContext";
+import "../styles/Rows.css";
+import { Row, Schema } from "../types/types";
 
-export const Rows = () => {
-  const { schema, data, onRowClick } = useDataGridContext();
-
+export const Rows: React.FC<{ schema: Schema, data: Row[], onRowClick?: (row: Row) => void }> = ({ schema, data, onRowClick }) => {
   if (!data || !schema) {
     return <div>Loading ...</div>
   }
@@ -11,8 +10,12 @@ export const Rows = () => {
     <tbody>
       {data.map((row, index) => (
         <tr key={index} onClick={() => onRowClick && onRowClick(row)}>
-          {schema.map((column) => (
-            <td key={column.field}>{row[column.field]}</td>
+          {schema.map((column) => ( 
+            <td className="cell" key={column.field}>
+              <div className="cell_content">
+                {row[column.field]}
+              </div>
+            </td>
           ))}
         </tr>
       ))}
