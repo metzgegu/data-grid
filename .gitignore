@@ -1,4 +1,5 @@
 showcase-website/backend/node_modules
+showcase-website/backend/dist
 data-grid/node_modules
 data-grid/dist
 showcase-website/frontend/node_modules

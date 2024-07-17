@@ -4,7 +4,12 @@
   "description": "Light backend to serve a list of row from a pg database",
   "main": "src/index.ts",
   "scripts": {
-    "start": "npx tsc && node dist/index.js"
+    "start": "npx tsc && node dist/src/index.js",
+    "lint": "prettier . --write",
+    "sequelize": "yarn ts-node-esm $(yarn bin)/sequelize",
+    "db:create": "sequelize db:create",
+    "db:migrate": "sequelize db:migrate",
+    "db:seed": "yarn sequelize db:seed:all"
   },
   "author": "metzgegu",
   "license": "MIT",
@@ -13,11 +18,19 @@
     "@types/cors": "^2.8.17",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.21",
+    "@types/node": "^20.14.11",
+    "@types/sequelize": "^4.28.20",
+    "@types/validator": "^13.12.0",
     "cors": "^2.8.5",
     "express": "^4.19.2",
+    "pg": "^8.12.0",
+    "prettier": "^3.3.3",
+    "reflect-metadata": "^0.2.2",
     "sequelize": "^6.37.3",
+    "sequelize-cli": "^6.6.2",
+    "sequelize-typescript": "^2.1.6",
     "sqlite3": "^5.1.7",
+    "ts-node": "^10.9.2",
     "typescript": "^5.5.3"
-  },
-  "type": "module"
+  }
 }

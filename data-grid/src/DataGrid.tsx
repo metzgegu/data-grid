@@ -8,16 +8,35 @@ export type Props = {
   schema: Schema;
   data: Row[];
   paginationOptions?: PaginationOptions;
+  infiniteScrollOptions?: {
+    onScrollEnd: () => void;
+  };
   onRowClick?: (row: Row) => void;
+  onSort?: (field: string, direction: "ASC" | "DESC") => void;
 };
 
-export const DataGrid: React.FC<Props> = ({ schema, data, onRowClick, paginationOptions }) => {
-  return (
-    <div className="datagrid">
-      <table className="table">
-        <Header schema={schema} />
+export const DataGrid: React.FC<Props> = ({
+  schema,
+  data,
+  onRowClick,
+  paginationOptions,
+  infiniteScrollOptions,
+  onSort,
+}) => {
+  const handleScroll = (e: any) => {
+    const bottom =
+      e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
+    if (bottom) {
+      infiniteScrollOptions?.onScrollEnd();
+    }
+  };
 
-        <Rows schema={schema} data={data} onRowClick={onRowClick}/>
+  return (
+    <div className="datagrid" onScroll={handleScroll}>
+      <table className="table">
+        <Header schema={schema} onSort={onSort} />
+
+        <Rows schema={schema} data={data} onRowClick={onRowClick} />
       </table>
 
       {paginationOptions && (

@@ -1,6 +1,7 @@
 export type Schema = {
   displayName: string;
   field: string;
+  sortable?: boolean;
 }[];
 
 export type Row = {

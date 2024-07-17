@@ -1,26 +1,26 @@
 table {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 
-thead th { 
-    position: sticky;
-    top: 0;
-    background-color: white;
-    padding: 8px;
+thead th {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  padding: 8px;
 }
 
 .datagrid__pagination {
-    padding: 8px 16px;
-    align-self: end;
-    position: sticky;
-    bottom: 0;
-    background: white;
-    width: 100%;
+  padding: 8px 16px;
+  align-self: end;
+  position: sticky;
+  bottom: 0;
+  background: white;
+  width: 100%;
 }
 
 .datagrid {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    overflow: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: auto;
 }

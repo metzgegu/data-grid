@@ -1,6 +1,7 @@
-import './App.css';
-import { ExamplePaginated } from './sections/ExamplePaginated';
-import { ExampleSimple } from './sections/ExampleSimple';
+import "./App.css";
+import { ExampleInfinite } from "./sections/ExampleInfinite";
+import { ExamplePaginated } from "./sections/ExamplePaginated";
+import { ExampleSimple } from "./sections/ExampleSimple";
 
 function App() {
   return (
@@ -10,7 +11,9 @@ function App() {
         <ExampleSimple />
 
         <ExamplePaginated />
-      </div> 
+
+        <ExampleInfinite />
+      </div>
     </div>
   );
 }

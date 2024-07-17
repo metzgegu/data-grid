@@ -6,6 +6,7 @@ styleInject(css_248z);
 type Schema = {
     displayName: string;
     field: string;
+    sortable?: boolean;
 }[];
 type Row = {
     [key: string]: any;
@@ -23,7 +24,11 @@ type Props = {
     schema: Schema;
     data: Row[];
     paginationOptions?: PaginationOptions;
+    infiniteScrollOptions?: {
+        onScrollEnd: () => void;
+    };
     onRowClick?: (row: Row) => void;
+    onSort?: (field: string, direction: 'ASC' | 'DESC') => void;
 };
 declare const DataGrid: React.FC<Props>;
 
