@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Schema } from "../types/types";
-import { on } from "events";
+import "../styles/Header.css";
 
 export const Header: React.FC<{
   schema: Schema;
@@ -24,15 +24,20 @@ export const Header: React.FC<{
     <thead>
       <tr>
         {schema.map((column) => (
-          <th key={column.field}>
+          <th key={column.field} className="header__th">
             <div
-              style={{ cursor: column.sortable ? "pointer" : "default" }}
-              onClick={() => column.sortable && handleSort(column.field)}
+              className="header__cell"
             >
-              {column.displayName}
-              {column.sortable &&
-                currentSort?.field === column.field &&
-                (currentSort.direction === "ASC" ? "^" : "⌄")}
+              <div
+                className="header__cell__sort"
+                style={{ cursor: column.sortable ? "pointer" : "default" }}
+                onClick={() => column.sortable && handleSort(column.field)}
+              >
+                {column.displayName}
+                {column.sortable &&
+                  currentSort?.field === column.field &&
+                  (currentSort.direction === "ASC" ? " ^" : " ⌄")}
+              </div>  
             </div>
           </th>
         ))}
