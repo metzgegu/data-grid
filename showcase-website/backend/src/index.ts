@@ -96,6 +96,19 @@ app.put("/users/:id", async (req, res) => {
   res.json(userToUpdate);
 });
 
+app.delete("/users/:id", async (req, res) => {
+  const id = req.params.id;
+  const userToDelete = await user.findByPk(id);
+
+  if (!userToDelete) {
+    res.status(404).send("User not found");
+    return;
+  }
+
+  await userToDelete.destroy();
+  res.status(204).send();
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });

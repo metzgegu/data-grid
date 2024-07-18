@@ -18,5 +18,17 @@ export const useUserUpdate = () => {
     return responseObject;
   };
 
-  return { updateUser };
+  const deleteUser = async (user: User) => {
+    if (!user || !user.id) {
+      return;
+    }
+
+    const response = await fetch(`http://localhost:3001/users/${user.id}`, {
+      method: "DELETE",
+    });
+
+    return response
+  }
+
+  return { updateUser, deleteUser };
 };

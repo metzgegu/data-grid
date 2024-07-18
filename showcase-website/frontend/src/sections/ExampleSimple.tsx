@@ -19,7 +19,7 @@ export const ExampleSimple: React.FC = () => {
   ];
   const [sort, setSort] = useState<string | undefined>(undefined);
   const [direction, setDirection] = useState<"ASC" | "DESC">("ASC");
-  const { updateUser } = useUserUpdate();
+  const { updateUser, deleteUser } = useUserUpdate();
   const { users, setUsers } = useUsersData({ limit: 100, sort, direction });
 
   const handleUserUpdate = async (user: User) => {
@@ -28,6 +28,13 @@ export const ExampleSimple: React.FC = () => {
       return prevUsers.map((u) => (u.id === userUpdated.id ? userUpdated : u));
     });
   };
+
+  const handleDeleteUser = async (user: User) => {
+    await deleteUser(user);
+    setUsers((prevUsers) => {
+      return prevUsers.filter((u) => u.id !== user.id);
+    });
+  }
 
   return (
     <section>
@@ -46,6 +53,7 @@ export const ExampleSimple: React.FC = () => {
             setDirection(direction);
           }}
           onCellContentUpdate={(row) => handleUserUpdate(row as User)}
+          onRowDelete={(row) => handleDeleteUser(row as User)}
         />
       </div>
     </section>

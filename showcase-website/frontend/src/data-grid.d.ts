@@ -27,6 +27,7 @@ declare module "data-grid" {
     onRowClick?: (row: Row) => void;
     onSort?: (field: string, direction: "ASC" | "DESC") => void;
     onCellContentUpdate?: (row: Row) => void;
+    onRowDelete?: (row: Row) => void;
   };
   declare const DataGrid: React.FC<Props>;
 }
