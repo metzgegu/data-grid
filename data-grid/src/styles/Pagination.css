@@ -21,9 +21,9 @@
 }
 
 .pagination__position--active {
-  background-color: #4caf50;
+  background-color: #969696;
   color: white;
-  border: 1px solid #4caf50;
+  border: 1px solid #969696;
 }
 
 .pagination__position:hover:not(.active) {

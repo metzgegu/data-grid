@@ -6,6 +6,8 @@ import("./database/models");
 
 const app = express();
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded());
 const port = 3001;
 
 const paginate = async (
@@ -78,6 +80,20 @@ app.get("/users/with_pagination", async (req, res) => {
     sortDirection as "ASC" | "DESC",
   );
   res.json(requestResponse);
+});
+
+app.put("/users/:id", async (req, res) => {
+  const id = req.params.id;
+  const userToUpdate = await user.findByPk(id);
+
+  if (!userToUpdate) {
+    res.status(404).send("User not found");
+    return;
+  }
+
+  await userToUpdate.update(req.body);
+  await userToUpdate.save();
+  res.json(userToUpdate);
 });
 
 app.listen(port, () => {

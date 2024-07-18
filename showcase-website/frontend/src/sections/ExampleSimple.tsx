@@ -1,19 +1,33 @@
 import { DataGrid } from "data-grid";
 import { useUsersData } from "../hooks/useUsersData";
 import { useState } from "react";
+import { useUserUpdate } from "../hooks/useUserUpdate";
+import { User } from "../types";
 
 export const ExampleSimple: React.FC = () => {
   const schema = [
-    { displayName: "Name", field: "name", sortable: true },
+    { displayName: "Name", field: "name", sortable: true, editable: true },
     { displayName: "Birth Date", field: "birthdate", sortable: true },
-    { displayName: "Email", field: "email", sortable: true },
-    { displayName: "Address", field: "address", sortable: true },
-    { displayName: "Phone", field: "phone", sortable: true },
+    { displayName: "Email", field: "email", sortable: true, editable: true },
+    {
+      displayName: "Address",
+      field: "address",
+      sortable: true,
+      editable: true,
+    },
+    { displayName: "Phone", field: "phone", sortable: true, editable: true },
   ];
   const [sort, setSort] = useState<string | undefined>(undefined);
   const [direction, setDirection] = useState<"ASC" | "DESC">("ASC");
+  const { updateUser } = useUserUpdate();
+  const { users, setUsers } = useUsersData({ limit: 100, sort, direction });
 
-  const { users } = useUsersData({ limit: 100, sort, direction });
+  const handleUserUpdate = async (user: User) => {
+    const userUpdated = await updateUser(user);
+    setUsers((prevUsers) => {
+      return prevUsers.map((u) => (u.id === userUpdated.id ? userUpdated : u));
+    });
+  };
 
   return (
     <section>
@@ -31,6 +45,7 @@ export const ExampleSimple: React.FC = () => {
             setSort(field);
             setDirection(direction);
           }}
+          onCellContentUpdate={(row) => handleUserUpdate(row as User)}
         />
       </div>
     </section>

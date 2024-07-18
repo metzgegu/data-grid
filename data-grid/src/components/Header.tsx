@@ -32,7 +32,7 @@ export const Header: React.FC<{
               {column.displayName}
               {column.sortable &&
                 currentSort?.field === column.field &&
-                (currentSort.direction === "ASC" ? "🔼" : "🔽")}
+                (currentSort.direction === "ASC" ? "^" : "⌄")}
             </div>
           </th>
         ))}

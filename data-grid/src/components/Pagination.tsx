@@ -71,12 +71,15 @@ export const Pagination: React.FC<{ paginationOptions: PaginationOptions }> = ({
         &raquo;&raquo;
       </button>
 
-      <select name="limit" className="pagination__limitSelector">
+      <select
+        name="limit"
+        className="pagination__limitSelector"
+        defaultValue={pageSize}
+      >
         {limitOptions.map((limit) => (
           <option
             key={limit}
             value={limit}
-            selected={limit === pageSize}
             onClick={() => onLimitChanged(limit)}
           >
             {limit}

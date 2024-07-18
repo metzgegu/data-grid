@@ -2,6 +2,7 @@ export type Schema = {
   displayName: string;
   field: string;
   sortable?: boolean;
+  editable?: boolean;
 }[];
 
 export type Row = {

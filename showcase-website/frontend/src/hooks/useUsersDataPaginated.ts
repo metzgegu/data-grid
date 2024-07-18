@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { User } from "../types";
 
 export const useUsersDataPaginated = ({
   page,
@@ -11,15 +12,7 @@ export const useUsersDataPaginated = ({
   sort?: string;
   direction: "ASC" | "DESC";
 }) => {
-  const [users, setUsers] = useState<
-    {
-      name: string;
-      birhdate: number;
-      email: string;
-      address: string;
-      phone: string;
-    }[]
-  >([]);
+  const [users, setUsers] = useState<User[]>([]);
   const [pageCount, setPageCount] = useState(0);
 
   useEffect(() => {
@@ -41,5 +34,5 @@ export const useUsersDataPaginated = ({
     fetchUsers();
   }, [page, limit, sort, direction]);
 
-  return { users, pageCount };
+  return { users, pageCount, setUsers };
 };

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { User } from "../types";
 
 export const useUsersData = ({
   limit,
@@ -9,15 +10,7 @@ export const useUsersData = ({
   sort?: string;
   direction: "ASC" | "DESC";
 }) => {
-  const [users, setUsers] = useState<
-    {
-      name: string;
-      birhdate: number;
-      email: string;
-      address: string;
-      phone: string;
-    }[]
-  >([]);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -32,5 +25,5 @@ export const useUsersData = ({
     fetchUsers();
   }, [limit, sort, direction]);
 
-  return { users };
+  return { users, setUsers };
 };

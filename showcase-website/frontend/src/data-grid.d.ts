@@ -4,6 +4,7 @@ declare module "data-grid" {
     displayName: string;
     field: string;
     sortable?: boolean;
+    editable?: boolean;
   }[];
   type Row = {
     [key: string]: any;
@@ -25,6 +26,7 @@ declare module "data-grid" {
     };
     onRowClick?: (row: Row) => void;
     onSort?: (field: string, direction: "ASC" | "DESC") => void;
+    onCellContentUpdate?: (row: Row) => void;
   };
   declare const DataGrid: React.FC<Props>;
 }

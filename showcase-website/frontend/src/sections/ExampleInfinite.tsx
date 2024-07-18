@@ -12,14 +12,13 @@ export const ExampleInfinite: React.FC = () => {
   ];
   const [sort, setSort] = useState<string | undefined>(undefined);
   const [direction, setDirection] = useState<"ASC" | "DESC">("ASC");
-  const [currentPage, setCurrentPage] = useState(1);
 
-  const { users, pageCount } = useUsersDataInfinite({
-    page: currentPage,
-    limit: 50,
-    sort,
-    direction,
-  });
+  const { users, pageCount, currentPage, setCurrentPage } =
+    useUsersDataInfinite({
+      limit: 50,
+      sort,
+      direction,
+    });
 
   return (
     <section>
@@ -33,7 +32,9 @@ export const ExampleInfinite: React.FC = () => {
           onRowClick={(row) => console.log(row)}
           infiniteScrollOptions={{
             onScrollEnd: () => {
-              pageCount > currentPage && setCurrentPage(currentPage + 1);
+              pageCount > currentPage &&
+                users?.length > 0 &&
+                setCurrentPage(currentPage + 1);
             },
           }}
           onSort={(field, direction) => {

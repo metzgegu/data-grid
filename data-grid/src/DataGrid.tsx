@@ -13,6 +13,7 @@ export type Props = {
   };
   onRowClick?: (row: Row) => void;
   onSort?: (field: string, direction: "ASC" | "DESC") => void;
+  onCellContentUpdate?: (row: Row) => void;
 };
 
 export const DataGrid: React.FC<Props> = ({
@@ -22,6 +23,7 @@ export const DataGrid: React.FC<Props> = ({
   paginationOptions,
   infiniteScrollOptions,
   onSort,
+  onCellContentUpdate,
 }) => {
   const handleScroll = (e: any) => {
     const bottom =
@@ -36,7 +38,12 @@ export const DataGrid: React.FC<Props> = ({
       <table className="table">
         <Header schema={schema} onSort={onSort} />
 
-        <Rows schema={schema} data={data} onRowClick={onRowClick} />
+        <Rows
+          schema={schema}
+          data={data}
+          onRowClick={onRowClick}
+          onCellContentUpdate={onCellContentUpdate}
+        />
       </table>
 
       {paginationOptions && (
