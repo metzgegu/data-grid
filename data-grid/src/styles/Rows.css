@@ -26,3 +26,9 @@ td {
 .cell {
   padding: 8px;
 }
+
+.row__delete {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}

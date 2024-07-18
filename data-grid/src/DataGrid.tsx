@@ -14,6 +14,7 @@ export type Props = {
   onRowClick?: (row: Row) => void;
   onSort?: (field: string, direction: "ASC" | "DESC") => void;
   onCellContentUpdate?: (row: Row) => void;
+  onRowDelete?: (row: Row) => void;
 };
 
 export const DataGrid: React.FC<Props> = ({
@@ -24,10 +25,11 @@ export const DataGrid: React.FC<Props> = ({
   infiniteScrollOptions,
   onSort,
   onCellContentUpdate,
+  onRowDelete,
 }) => {
   const handleScroll = (e: any) => {
     const bottom =
-      e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
+      e.target.scrollHeight - e.target.scrollTop < e.target.clientHeight + e.target.clientHeight;
     if (bottom) {
       infiniteScrollOptions?.onScrollEnd();
     }
@@ -43,6 +45,7 @@ export const DataGrid: React.FC<Props> = ({
           data={data}
           onRowClick={onRowClick}
           onCellContentUpdate={onCellContentUpdate}
+          onRowDelete={onRowDelete}
         />
       </table>
 

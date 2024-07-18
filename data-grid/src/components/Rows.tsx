@@ -8,7 +8,8 @@ export const Rows: React.FC<{
   data: Row[];
   onRowClick?: (row: Row) => void;
   onCellContentUpdate?: (row: Row) => void;
-}> = ({ schema, data, onRowClick, onCellContentUpdate }) => {
+  onRowDelete?: (row: Row) => void;
+}> = ({ schema, data, onRowClick, onCellContentUpdate, onRowDelete }) => {
   if (!data || !schema) {
     return <div>Loading ...</div>;
   }
@@ -27,6 +28,11 @@ export const Rows: React.FC<{
               editable={column.editable}
             />
           ))}
+          {onRowDelete && (
+            <td>
+              <button className="row__delete" onClick={() => onRowDelete(row)}>🗑️</button>
+            </td>
+          )}
         </tr>
       ))}
     </tbody>
