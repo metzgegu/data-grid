@@ -1,12 +1,12 @@
 .header__cell {
-    resize: horizontal;
-    overflow: auto;
-    margin: 0px;
-    padding: 0px;
-    display: block;
-    min-width: 100%;
+  resize: horizontal;
+  overflow: auto;
+  margin: 0px;
+  padding: 0px;
+  display: block;
+  min-width: 100%;
 }
 
 .header__cell__sort {
-    margin: 8px;
+  margin: 8px;
 }

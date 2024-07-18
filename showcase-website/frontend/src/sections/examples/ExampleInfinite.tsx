@@ -1,6 +1,6 @@
 import { DataGrid } from "data-grid";
 import { useState } from "react";
-import { useUsersDataInfinite } from "../hooks/useUsersDataInfinite";
+import { useUsersDataInfinite } from "../../hooks/useUsersDataInfinite";
 
 export const ExampleInfinite: React.FC = () => {
   const schema = [
@@ -22,7 +22,7 @@ export const ExampleInfinite: React.FC = () => {
 
   return (
     <section>
-      <h2>Lazy load data-grid</h2>
+      <h3>Lazy load data-grid</h3>
       <p>This is a example with a infinite scroll data-grid component.</p>
 
       <div style={{ height: "400px" }}>

@@ -17,14 +17,19 @@ export const DataGrid: React.FC<Props> = ({
 }) => {
   const handleScroll = (e: any) => {
     const bottom =
-      e.target.scrollHeight - e.target.scrollTop < e.target.clientHeight + e.target.clientHeight;
+      e.target.scrollHeight - e.target.scrollTop <
+      e.target.clientHeight + e.target.clientHeight;
     if (bottom) {
       infiniteScrollOptions?.onScrollEnd();
     }
   };
 
+  if (!schema) {
+    return <div>No schema provided</div>;
+  }
+
   return (
-    <DataGridContextProvider 
+    <DataGridContextProvider
       value={{
         schema,
         data,
@@ -33,7 +38,7 @@ export const DataGrid: React.FC<Props> = ({
         infiniteScrollOptions,
         onSort,
         onCellContentUpdate,
-        onRowDelete 
+        onRowDelete,
       }}
     >
       <div className="datagrid" onScroll={handleScroll}>

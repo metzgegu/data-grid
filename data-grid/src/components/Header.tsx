@@ -2,8 +2,7 @@ import { useState } from "react";
 import "../styles/Header.css";
 import { useDataGridContext } from "../contexts/DataGrid";
 
-export const Header: React.FC<{
-}> = () => {
+export const Header: React.FC<{}> = () => {
   const { schema, onSort, onRowDelete } = useDataGridContext();
 
   if (!schema) {
@@ -25,9 +24,7 @@ export const Header: React.FC<{
       <tr>
         {schema.map((column) => (
           <th key={column.field} className="header__th">
-            <div
-              className="header__cell"
-            >
+            <div className="header__cell">
               <div
                 className="header__cell__sort"
                 style={{ cursor: column.sortable ? "pointer" : "default" }}
@@ -37,7 +34,7 @@ export const Header: React.FC<{
                 {column.sortable &&
                   currentSort?.field === column.field &&
                   (currentSort.direction === "ASC" ? " ^" : " ⌄")}
-              </div>  
+              </div>
             </div>
           </th>
         ))}

@@ -1,10 +1,10 @@
 import { DataGrid } from "data-grid";
-import { useUsersData } from "../hooks/useUsersData";
 import { useState } from "react";
-import { useUserUpdate } from "../hooks/useUserUpdate";
-import { User } from "../types";
+import { useUsersDataPaginated } from "../../hooks/useUsersDataPaginated";
+import { useUserUpdate } from "../../hooks/useUserUpdate";
+import { User } from "../../types";
 
-export const ExampleSimple: React.FC = () => {
+export const ExamplePaginated: React.FC = () => {
   const schema = [
     { displayName: "Name", field: "name", sortable: true, editable: true },
     { displayName: "Birth Date", field: "birthdate", sortable: true },
@@ -19,9 +19,17 @@ export const ExampleSimple: React.FC = () => {
   ];
   const [sort, setSort] = useState<string | undefined>(undefined);
   const [direction, setDirection] = useState<"ASC" | "DESC">("ASC");
-  const { updateUser, deleteUser } = useUserUpdate();
-  const { users, setUsers } = useUsersData({ limit: 100, sort, direction });
+  const [currentPage, setCurrentPage] = useState(1);
+  const [limit, setLimit] = useState(10);
 
+  const { users, pageCount, setUsers } = useUsersDataPaginated({
+    page: currentPage,
+    limit,
+    sort,
+    direction,
+  });
+
+  const { updateUser } = useUserUpdate();
   const handleUserUpdate = async (user: User) => {
     const userUpdated = await updateUser(user);
     setUsers((prevUsers) => {
@@ -29,31 +37,32 @@ export const ExampleSimple: React.FC = () => {
     });
   };
 
-  const handleDeleteUser = async (user: User) => {
-    await deleteUser(user);
-    setUsers((prevUsers) => {
-      return prevUsers.filter((u) => u.id !== user.id);
-    });
-  }
-
   return (
     <section>
-      <h2>Basic usage of data-grid</h2>
-      <p>
-        This is a simple example with a basic usage of the data-grid component.
-      </p>
+      <h3>Paginated data-grid</h3>
+      <p>This is a example with a paginated data-grid component.</p>
 
       <div style={{ height: "400px" }}>
         <DataGrid
           schema={schema}
           data={users}
           onRowClick={(row) => console.log(row)}
+          paginationOptions={{
+            page: currentPage,
+            pageSize: limit,
+            total: pageCount,
+            onPageChanged: (page) => setCurrentPage(page),
+            onLimitChanged: (newLimit) => {
+              setLimit(newLimit);
+              setCurrentPage(1);
+            },
+            limitOptions: [10, 20, 50],
+          }}
           onSort={(field, direction) => {
             setSort(field);
             setDirection(direction);
           }}
           onCellContentUpdate={(row) => handleUserUpdate(row as User)}
-          onRowDelete={(row) => handleDeleteUser(row as User)}
         />
       </div>
     </section>

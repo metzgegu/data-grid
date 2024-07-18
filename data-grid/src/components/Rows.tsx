@@ -3,10 +3,17 @@ import { Cell } from "./Cell";
 import { useDataGridContext } from "../contexts/DataGrid";
 
 export const Rows: React.FC = () => {
-  const { schema, data, onRowClick, onCellContentUpdate, onRowDelete } = useDataGridContext();
+  const { schema, data, onRowClick, onCellContentUpdate, onRowDelete } =
+    useDataGridContext();
 
   if (!data || !schema) {
-    return <div>Loading ...</div>;
+    return (
+      <tbody>
+        <tr>
+          <td>Loading ...</td>
+        </tr>
+      </tbody>
+    );
   }
 
   return (
@@ -25,7 +32,9 @@ export const Rows: React.FC = () => {
           ))}
           {onRowDelete && (
             <td>
-              <button className="row__delete" onClick={() => onRowDelete(row)}>🗑️</button>
+              <button className="row__delete" onClick={() => onRowDelete(row)}>
+                🗑️
+              </button>
             </td>
           )}
         </tr>

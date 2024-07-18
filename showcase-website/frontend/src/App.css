@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  display: flex;
 }
 
 .App-logo {
@@ -38,6 +39,23 @@
 }
 
 .container {
-  width: 1500px;
+  width: 1000px;
   margin: 0 auto;
+  text-align: left;
+}
+
+.props__thead {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.props__cell {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.example__list {
+  display: flex;
+  gap: 32px;
+  flex-direction: column;
 }

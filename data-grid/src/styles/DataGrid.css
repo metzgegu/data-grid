@@ -10,7 +10,7 @@ thead th {
 }
 
 .datagrid__pagination {
-  padding: 8px 16px;
+  padding: 16px 0;
   align-self: end;
   position: sticky;
   bottom: 0;
