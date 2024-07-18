@@ -9,7 +9,8 @@
     "sequelize": "yarn ts-node-esm $(yarn bin)/sequelize",
     "db:create": "sequelize db:create",
     "db:migrate": "sequelize db:migrate",
-    "db:seed": "yarn sequelize db:seed:all"
+    "db:seed": "yarn sequelize db:seed:all",
+    "db:drop": "yarn sequelize db:drop"
   },
   "author": "metzgegu",
   "license": "MIT",

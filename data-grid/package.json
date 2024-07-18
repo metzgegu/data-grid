@@ -33,7 +33,7 @@
     "react-dom": "18.3.1"
   },
   "scripts": {
-    "test": "react-scripts test --watchAll=false",
+    "test": "yarn && react-scripts test --watchAll=false",
     "build": "rm -rf node_modules/react && rm -rf node_modules/react-dom && rollup -c --bundleConfigAsCjs",
     "lint": "prettier . --write"
   },

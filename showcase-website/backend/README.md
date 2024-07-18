@@ -1,17 +1,18 @@
-# Backend 
+# Backend
 
 This project is the backend of the showcase-website
 
 It is build with:
+
 - Express.js
 - Sequelize.js
 - Typescript
 - faker.js
 - A postgres database
 
-## Getting started 
+## Getting started
 
-### Install project dependencies 
+### Install project dependencies
 
 ```
 yarn

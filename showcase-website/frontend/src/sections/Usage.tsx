@@ -1,10 +1,12 @@
 export const Usage = () => {
-    return (
-        <><p>
-            To use the data grid component, you can import it and pass the schema
-            and data as props:
-        </p><pre>
-                <code>{`
+  return (
+    <>
+      <p>
+        To use the data grid component, you can import it and pass the schema
+        and data as props:
+      </p>
+      <pre>
+        <code>{`
             import { DataGrid } from "data-grid";
 
             const schema = [
@@ -29,6 +31,7 @@ export const Usage = () => {
 
             <DataGrid schema={schema} data={data} />
           `}</code>
-            </pre></>
-    )
+      </pre>
+    </>
+  );
 };

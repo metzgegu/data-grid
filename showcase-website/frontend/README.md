@@ -2,9 +2,9 @@
 
 This project is the frontend of the showcase-website
 
-## Getting started 
+## Getting started
 
-Install project dependencies 
+Install project dependencies
 
 ```
 yarn

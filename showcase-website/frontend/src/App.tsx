@@ -13,9 +13,9 @@ function App() {
         <h1>Data grid</h1>
 
         <p>
-          This is a showcase of the data grid component. It is a
-          customizable and extensible data grid component that can be used to
-          display data in a tabular format.
+          This is a showcase of the data grid component. It is a customizable
+          and extensible data grid component that can be used to display data in
+          a tabular format.
         </p>
 
         <h2>Features</h2>

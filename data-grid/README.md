@@ -18,6 +18,7 @@ To install the data grid component, you can run the following command:
 ```
 yarn add data-grid
 ```
+
 Or if you are using npm, you can run the following command instead:
 
 ```
@@ -56,13 +57,13 @@ const data = [
 
 ## Props
 
-| Prop                  | Type     | Description                                                                                                                                                                                  |
-|-----------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| schema                | Array    | An array of objects that define the columns of the data grid.                                                                                                                                |
-| data                  | Array    | An array of objects that define the rows of the data grid.                                                                                                                                   |
-| onSort                | Function | A function that is called when a column is sorted. It receives the field and direction as arguments.                                                                                         |
-| onRowClick            | Function | A function that is called when a row is clicked. It receives the row object as an argument.                                                                                                  |
-| onCellContentUpdate   | Function | A function that is called when a cell content is updated. It receives the row object as an argument.                                                                                         |
-| onRowDelete           | Function | A function that is called when a row is deleted. It receives the row object as an argument.                                                                                                  |
-| infiniteScrollOptions | Object   | An object that defines the infinite scroll options of the data grid.  (`onScrollEnd`: Function)                                                                                                |
+| Prop                  | Type     | Description                                                                                                                                                                                         |
+| --------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| schema                | Array    | An array of objects that define the columns of the data grid.                                                                                                                                       |
+| data                  | Array    | An array of objects that define the rows of the data grid.                                                                                                                                          |
+| onSort                | Function | A function that is called when a column is sorted. It receives the field and direction as arguments.                                                                                                |
+| onRowClick            | Function | A function that is called when a row is clicked. It receives the row object as an argument.                                                                                                         |
+| onCellContentUpdate   | Function | A function that is called when a cell content is updated. It receives the row object as an argument.                                                                                                |
+| onRowDelete           | Function | A function that is called when a row is deleted. It receives the row object as an argument.                                                                                                         |
+| infiniteScrollOptions | Object   | An object that defines the infinite scroll options of the data grid. (`onScrollEnd`: Function)                                                                                                      |
 | paginationOptions     | Object   | An object that defines the pagination options of the data grid. (`page`: number, `pageSize`: number, `total`: number, `onPageChanged`: Function, `onLimitChanged`: Function, `limitOptions`: Array) |

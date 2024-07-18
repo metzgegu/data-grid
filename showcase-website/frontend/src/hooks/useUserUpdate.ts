@@ -27,8 +27,8 @@ export const useUserUpdate = () => {
       method: "DELETE",
     });
 
-    return response
-  }
+    return response;
+  };
 
   return { updateUser, deleteUser };
 };

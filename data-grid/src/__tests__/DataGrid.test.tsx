@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import '@testing-library/jest-dom'
+import "@testing-library/jest-dom";
 import { DataGrid } from "../DataGrid";
 import { Row, Schema } from "../types/types";
 

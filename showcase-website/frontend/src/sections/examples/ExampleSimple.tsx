@@ -34,7 +34,7 @@ export const ExampleSimple: React.FC = () => {
     setUsers((prevUsers) => {
       return prevUsers.filter((u) => u.id !== user.id);
     });
-  }
+  };
 
   return (
     <section>
