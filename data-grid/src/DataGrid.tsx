@@ -1,21 +1,9 @@
 import "./styles/DataGrid.css";
-import { PaginationOptions, Row, Schema } from "./types/types";
+import { PaginationOptions, Props, Row, Schema } from "./types/types";
 import { Rows } from "./components/Rows";
 import { Header } from "./components/Header";
 import { Pagination } from "./components/Pagination";
-
-export type Props = {
-  schema: Schema;
-  data: Row[];
-  paginationOptions?: PaginationOptions;
-  infiniteScrollOptions?: {
-    onScrollEnd: () => void;
-  };
-  onRowClick?: (row: Row) => void;
-  onSort?: (field: string, direction: "ASC" | "DESC") => void;
-  onCellContentUpdate?: (row: Row) => void;
-  onRowDelete?: (row: Row) => void;
-};
+import { DataGridContextProvider } from "./contexts/DataGrid";
 
 export const DataGrid: React.FC<Props> = ({
   schema,
@@ -36,24 +24,31 @@ export const DataGrid: React.FC<Props> = ({
   };
 
   return (
-    <div className="datagrid" onScroll={handleScroll}>
-      <table className="table">
-        <Header schema={schema} onSort={onSort} />
+    <DataGridContextProvider 
+      value={{
+        schema,
+        data,
+        onRowClick,
+        paginationOptions,
+        infiniteScrollOptions,
+        onSort,
+        onCellContentUpdate,
+        onRowDelete 
+      }}
+    >
+      <div className="datagrid" onScroll={handleScroll}>
+        <table className="table">
+          <Header />
 
-        <Rows
-          schema={schema}
-          data={data}
-          onRowClick={onRowClick}
-          onCellContentUpdate={onCellContentUpdate}
-          onRowDelete={onRowDelete}
-        />
-      </table>
+          <Rows />
+        </table>
 
-      {paginationOptions && (
-        <div className="datagrid__pagination">
-          <Pagination paginationOptions={paginationOptions} />
-        </div>
-      )}
-    </div>
+        {paginationOptions && (
+          <div className="datagrid__pagination">
+            <Pagination paginationOptions={paginationOptions} />
+          </div>
+        )}
+      </div>
+    </DataGridContextProvider>
   );
 };

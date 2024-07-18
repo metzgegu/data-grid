@@ -1,15 +1,10 @@
-import { useState } from "react";
 import "../styles/Rows.css";
-import { Row, Schema } from "../types/types";
 import { Cell } from "./Cell";
+import { useDataGridContext } from "../contexts/DataGrid";
 
-export const Rows: React.FC<{
-  schema: Schema;
-  data: Row[];
-  onRowClick?: (row: Row) => void;
-  onCellContentUpdate?: (row: Row) => void;
-  onRowDelete?: (row: Row) => void;
-}> = ({ schema, data, onRowClick, onCellContentUpdate, onRowDelete }) => {
+export const Rows: React.FC = () => {
+  const { schema, data, onRowClick, onCellContentUpdate, onRowDelete } = useDataGridContext();
+
   if (!data || !schema) {
     return <div>Loading ...</div>;
   }

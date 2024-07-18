@@ -17,3 +17,16 @@ export type PaginationOptions = {
   onLimitChanged: (limit: number) => void;
   limitOptions: number[];
 };
+
+export type Props = {
+  schema: Schema;
+  data: Row[];
+  paginationOptions?: PaginationOptions;
+  infiniteScrollOptions?: {
+    onScrollEnd: () => void;
+  };
+  onRowClick?: (row: Row) => void;
+  onSort?: (field: string, direction: "ASC" | "DESC") => void;
+  onCellContentUpdate?: (row: Row) => void;
+  onRowDelete?: (row: Row) => void;
+};

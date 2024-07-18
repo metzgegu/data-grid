@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Schema } from "../types/types";
 import "../styles/Header.css";
+import { useDataGridContext } from "../contexts/DataGrid";
 
 export const Header: React.FC<{
-  schema: Schema;
-  onSort?: (field: string, direction: "ASC" | "DESC") => void;
-}> = ({ schema, onSort }) => {
+}> = () => {
+  const { schema, onSort, onRowDelete } = useDataGridContext();
+
   if (!schema) {
     return <div>Loading ...</div>;
   }
@@ -41,6 +41,7 @@ export const Header: React.FC<{
             </div>
           </th>
         ))}
+        {!!onRowDelete && <th></th>}
       </tr>
     </thead>
   );
